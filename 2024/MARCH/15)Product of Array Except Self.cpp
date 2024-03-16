@@ -1,3 +1,5 @@
+//Explanation Link :https://leetcode.com/problems/product-of-array-except-self/solutions/4881321/4approaches-simple-beginner-friendly-understanding-c/
+
 
 //Brute Force
 
@@ -26,19 +28,17 @@ public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int totalProduct = 1;
         int zeroCount = 0;
-        
-        // Calculate product of non-zero elements and count zeros
         for (int num : nums) {
             if (num != 0) totalProduct *= num;
             else zeroCount++;
         }
 
-        vector<int> result(nums.size(), 0); // Initialize result array with zeros
+        vector<int> result(nums.size(), 0);
         
         for (int i = 0; i < nums.size(); i++) {
-            if (zeroCount > 1) continue; // More than one zero, result is already correct (all zeros)
-            if (zeroCount == 0) result[i] = totalProduct / nums[i]; // No zeros, normal case
-            else if (nums[i] == 0) result[i] = totalProduct; // Exactly one zero, this index had the zero
+            if (zeroCount > 1) continue;
+            if (zeroCount == 0) result[i] = totalProduct / nums[i];
+            else if (nums[i] == 0) result[i] = totalProduct;
         }
 
         return result;
